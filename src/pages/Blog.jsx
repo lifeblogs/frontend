@@ -22,12 +22,12 @@ function Blog() {
 
 	return (
 		<div>
-		<h2>{blog.title}</h2>
+		<h1>{blog.title}</h1>
 		<p>
-		<em>Category: {blog.category} | Posted on {new Date(blog.date_created).toLocaleDateString()}</em>
+		<strong>Category:</strong> {blog.category}, <em>posted on {new Date(blog.date_created).toLocaleDateString()}</em>
 		</p>
-		<hr />
 		<ReactMarkdown>{blog.content}</ReactMarkdown>
+		<hr />
 		</div>
 	);
 };

@@ -1,7 +1,91 @@
+@import url("fonts.css");
+
+:root {
+	--font-rm: "Merriweather";
+	--font-sf: "Merriweather Sans";
+	--col-bg: white;
+	--col-fg: black;
+	--col-hl: red;
+	--col-text: black
+}
+
+:root.dark {
+}
+
+*,
+*::before
+*::after {
+	box-sizing: border-box
+}
+
+.wrapper {
+	max-width: 980px;
+	margin: auto;
+	padding: 8px
+}
+
+body {
+	font-family: var(--font-rm);
+	font-size: 14px;
+	line-height: 1.8;
+	background-color: var(--col-bg);
+	color: var(--col-text)
+}
+
 nav {
-	background-color: lightblue
+	padding: 0 8px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center
+}
+
+nav ul li {
+	display: inline-block;
+	margin-inline: 12px
+}
+
+nav ul li:last-child {
+        margin-right: 0
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block
+}
+
+.dropdown-menu {
+	position: absolute;
+	top: 100%;
+	z-index: 100;
+	white-space: nowrap
+}
+
+.hero {
+	text-align: center;
+	margin: 30px 0
+}
+
+.hero__name {
+	font-size: 48px;
+	font-weight: bold;
+	font-family: var(--font-sf);
+	margin-bottom: 20px;
+	line-height: 1.2
+}
+
+.hero__desc {
+	margin-top: 20px;
+	font-size: 18px;
+	font-style: italic
 }
 
 footer {
-	background-color: lightpink
+	padding: 0 8px
+}
+
+hr {
+	width: 55%;
+	background-color: lightgrey;
+	height: 2px;
+	color: lightgrey
 }

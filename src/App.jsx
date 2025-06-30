@@ -16,9 +16,9 @@ import Admin from "./pages/Admin";
 
 function App() {
 	return (
-		<div className="wrapper">
 		<Router>
 		<NavBar />
+		<div className="wrapper">
 		<Routes>
 			<Route path="/" element={<Home />} />
 			<Route path="/about" element={<About />} />
@@ -29,9 +29,9 @@ function App() {
 			<Route path="/admin" element={<Admin />} />
 			<Route path="/admin-login" element={<AdminLogin />} /> 
 		</Routes>
+		</div>
 		<Footer />
 		</Router>
-		</div>
 	)
 }
 
