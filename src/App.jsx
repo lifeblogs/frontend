@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
@@ -15,10 +15,12 @@ import Admin from "./pages/Admin";
 
 
 function App() {
+
+	const [openMenu, setOpenMenu] = useState(false);
 	return (
 		<Router>
-		<NavBar />
-		<div className="wrapper">
+		<NavBar openMenu={openMenu} setOpenMenu={setOpenMenu} />
+		<div className={`wrapper ${openMenu ? 'blurred' : ''}`}>
 		<Routes>
 			<Route path="/" element={<Home />} />
 			<Route path="/about" element={<About />} />

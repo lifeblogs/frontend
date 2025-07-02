@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Navbar() {
+export default function NavBar({openMenu, setOpenMenu}) {
 	const [showTopics, setShowTopics] = useState(false);
-	const [openMenu, setOpenMenu] = useState(false);
 
 	return (
 		<nav>
@@ -15,7 +14,7 @@ export default function Navbar() {
 		<ul className={`links ${openMenu ? 'open' : ''}`}>
 		<li>
 		<div
-		className="dropdown"
+		className="dropdown hlcol"
 		onMouseEnter={() => setShowTopics(true)}
 		onMouseLeave={() => setShowTopics(false)}
 		style={{ cursor: 'pointer' }}
