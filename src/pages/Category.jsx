@@ -14,7 +14,9 @@ function CategoryPage() {
 
 	return (
 		<div>
-		<h2>Category: {name}</h2>
+		<div className="cat__name">
+			<Link to={`/category/${name}`}>{name}</Link>
+		</div>
 		{blogs.length === 0 ? (
 			<p>No blog posts yet.</p>
 		) : (

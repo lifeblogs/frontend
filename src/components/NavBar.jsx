@@ -1,13 +1,18 @@
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+export default function Navbar() {
 	const [showTopics, setShowTopics] = useState(false);
+	const [openMenu, setOpenMenu] = useState(false);
 
 	return (
 		<nav>
 		<Link to="/">Home</Link>
-		<ul className="links">
+
+		<div className="dropdown-wrapper">
+		<div className="dropdown-button" onClick={() => setOpenMenu(!openMenu)}>☰</div>
+
+		<ul className={`links ${openMenu ? 'open' : ''}`}>
 		<li>
 		<div
 		className="dropdown"
@@ -30,8 +35,7 @@ const Navbar = () => {
 		<li><Link to="/archive">Archive</Link></li>
 		<li><Link to="/contact">Contact</Link></li>
 		</ul>
+		</div>
 		</nav>
 	);
-};
-
-export default Navbar;
+}

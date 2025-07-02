@@ -3,9 +3,10 @@
 :root {
 	--font-rm: "Merriweather";
 	--font-sf: "Merriweather Sans";
-	--col-bg: white;
+	--col-bg: #F5F3EE;
 	--col-fg: black;
-	--col-hl: red;
+	--col-hl: #fc7153;
+	--col-hl2: #3b3b5d;
 	--col-text: black
 }
 
@@ -13,15 +14,29 @@
 }
 
 *,
-*::before
+*::before,
 *::after {
 	box-sizing: border-box
 }
 
+a {
+	color: var(--col-hl);
+	text-decoration: none
+}
+
+a:visited {
+	color: var(--col-hl2)
+}
+
 .wrapper {
 	max-width: 980px;
-	margin: auto;
-	padding: 8px
+	margin: auto
+}
+
+@media (max-width: 550px) {
+	.wrapper {
+		padding: 0px 1rem
+	}
 }
 
 body {
@@ -29,23 +44,32 @@ body {
 	font-size: 14px;
 	line-height: 1.8;
 	background-color: var(--col-bg);
-	color: var(--col-text)
+	color: var(--col-text);
+	margin: 0
 }
+
 
 nav {
-	padding: 0 8px;
+	font-family: var(--font-sf);
+	padding: 1.5rem;
+	font-size: 16px;
 	display: flex;
 	justify-content: space-between;
-	align-items: center
+	align-items: center;
+	box-shadow: 0 2px 2px -2px grey;
+	margin-bottom: 1rem
 }
 
-nav ul li {
-	display: inline-block;
-	margin-inline: 12px
+.links {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	gap: 2rem
 }
 
-nav ul li:last-child {
-        margin-right: 0
+.links li {
+	display: inline-block
 }
 
 .dropdown {
@@ -56,17 +80,66 @@ nav ul li:last-child {
 .dropdown-menu {
 	position: absolute;
 	top: 100%;
-	z-index: 100;
+	left: 0;
+	padding: 4px;
+	z-index: 10;
 	white-space: nowrap
 }
 
+.dropdown-button {
+        display: none;
+        font-size: 20px;
+        cursor: pointer;
+        background: none;
+        border: none
+}
+
+@media (max-width: 550px) {
+        .dropdown-button {
+                display: block;
+                position: fixed;
+                top: 16px;
+                right: 16px;
+                z-index: 101;
+                background: none;
+                font-size: 24px
+        }
+
+        .links {
+                position: fixed;
+                top: 73.19px;
+                right: -250px;
+                width: 250px;
+                flex-direction: column;
+                padding: 10px;
+                transition: right 0.3s ease;
+                z-index: 100;
+		background-color: lightblue
+        }
+
+        .links.open {
+                right: 0
+        }
+
+        .links li {
+                display: block;
+                margin: 0
+        }
+
+        .dropdown-menu {
+                position: relative;
+                border: none
+        }
+}
+
+
 .hero {
 	text-align: center;
-	margin: 30px 0
+	margin: 6rem 0
 }
 
 .hero__name {
-	font-size: 48px;
+	font-size: 42px;
 	font-weight: bold;
 	font-family: var(--font-sf);
 	margin-bottom: 20px;
@@ -79,13 +152,43 @@ nav ul li:last-child {
 	font-style: italic
 }
 
-footer {
-	padding: 0 8px
+@media (max-width: 550px) {
+
+	.hero {
+		margin: 5rem 0
+	}
+
+	.hero__name {
+		font-size: 36px
+	}
+
+	.hero__desc {
+		font-size: 16px
+	}
 }
 
-hr {
-	width: 55%;
-	background-color: lightgrey;
-	height: 2px;
-	color: lightgrey
+footer {
+	padding: 1rem 1.5rem;
+	font-family: var(--font-sf);
+	box-shadow: 0 -2px 2px -2px grey;
+	margin-top: 1rem
+}
+
+.footer__cr, .footer__desc {
+	font-size: smaller
+}
+
+.footer__name {
+	font-weight: bold;
+	font-size: 24px
+}
+
+h1, h2, h3 {
+	font-family: var(--font-sf)
+}
+
+.cat__name {
+	font-family: var(--font-sf);
+	font-weight: bold;
+	text-transform: uppercase
 }

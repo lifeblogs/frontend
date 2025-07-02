@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
@@ -21,6 +21,11 @@ function Blog() {
 	if (!blog) return <p>Loading...</p>;
 
 	return (
+		<>
+
+		<div className="cat__name">
+			<Link to={`/category/${blog.category}`}>{blog.category}</Link>
+		</div>
 		<div>
 		<h1>{blog.title}</h1>
 		<p>
@@ -29,6 +34,8 @@ function Blog() {
 		<ReactMarkdown>{blog.content}</ReactMarkdown>
 		<hr />
 		</div>
+
+		</>
 	);
 };
 
