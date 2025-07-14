@@ -6,26 +6,19 @@
 	--col-bg: #F5F3EE;
 	--col-fg: black;
 	--col-hl: #7f543c;
-	--col-hl2: #3b3b5d;
 	--col-text: black
 }
 
 :root.dark {
 }
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
 	box-sizing: border-box
 }
 
 a {
 	color: var(--col-hl);
 	text-decoration: none
-}
-
-a:visited {
-	color: var(--col-hl2)
 }
 
 .hlcol {
@@ -55,7 +48,7 @@ body {
 
 nav {
 	font-family: var(--font-sf);
-	padding: 1.5rem;
+	padding: 1rem;
 	font-size: 16px;
 	display: flex;
 	justify-content: space-between;
@@ -76,11 +69,23 @@ nav {
 	padding: 0;
 	margin: 0;
 	display: flex;
-	gap: 2rem
+	gap: 2rem;
+	align-items: center
 }
 
-.links li {
-	display: inline-block
+nav li {
+	display: inline-block;
+	margin: 0;
+	padding: auto
+}
+
+nav a {
+	color: var(--col-fg)
+}
+
+nav a:hover {
+	color: var(--col-hl);
+	transition: 0.06s ease
 }
 
 .dropdown {
@@ -99,68 +104,98 @@ nav {
 }
 
 .dropdown-button {
-        display: none;
-        font-size: 20px;
-        cursor: pointer;
-        background: none;
-        border: none
+	display: none;
+	font-size: 20px;
+	cursor: pointer;
+	background: none;
+	border: none
 }
 
-@media (max-width: 550px) {
+form input, input:focus {
+	background-color: var(--col-bg);
+	border: solid 2px grey;
+	width: 150px;
+	padding: 10px
+}
+
+form button {
+	background-color: var(--col-hl);
+	color: var(--col-bg);
+	border: none;
+	padding: 10px 30px;
+	font-weight: bold;
+	cursor: pointer;
+	border: solid 2px var(--col-hl)
+}
+
+form button {
+	margin-left: 20px
+}
+
+form input, button {
+	font-size: 14px
+}
+
+@media (max-width: 950px) {
 	nav {
 		font-size: 14px;
+		padding: 1rem
 	}
-	
+
 	.links {
 		gap: 10px
 	}
 
-        .dropdown-button {
-                display: block;
-                position: fixed;
-                top: 16px;
-                right: 16px;
-                z-index: 101;
-                background: none;
-                font-size: 24px
-        }
+	.dropdown-button {
+		display: block;
+		position: fixed;
+		right: 16px;
+		z-index: 101;
+		background: none;
+		font-size: 24px
+	}
 
-        .links {
-                position: fixed;
-                top: 76.797px;
-                right: -200px;
-                width: 200px;
-                flex-direction: column;
-                padding: 1rem;
-                transition: right 0.1s ease;
-                z-index: 100;
+	.links {
+		position: fixed;
+		top: 76.797px;
+		right: -100vw;
+		width: 100vw;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 1rem;
+		transition: right 0.1s ease;
+		z-index: 100;
 		background-color: var(--col-bg);
 		border-radius: 0px 0px 0px 10px
-        }
+	}
 
 	.open {
 		transition: 0.1s ease-in-out
 	}
 
-        .links.open {
-                right: 0
-        }
+	.links.open {
+		right: 0
+	}
 
-        .links li {
-                display: block;
-                margin: 0
-        }
+	.links li {
+		display: block;
+		margin: 0
+	}
 
-        .dropdown-menu {
-                position: relative;
-                border: none
-        }
+	.dropdown-menu {
+		position: relative;
+		border: none
+	}
+
+	form button {
+		margin: 0;
+		margin-top: 10px
+	}
 }
-
 
 .hero {
 	text-align: center;
-	margin: 6rem 0
+	margin: 4.5rem 0
 }
 
 .hero__name {
@@ -175,6 +210,84 @@ nav {
 	margin-top: 20px;
 	font-size: 18px;
 	font-style: italic
+}
+
+.heroine {
+	flex-direction: column;
+}
+
+.heroine__cats {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: -1px
+}
+
+.heroine__cat {
+	font-family: var(--font-sf);
+	font-weight: bold;
+	color: gray;
+	font-size: small;
+	text-transform: uppercase;
+	padding: 10px 0px;
+	background: transparent;
+	cursor: pointer;
+	width: 100%;
+	text-align: center
+}
+
+.heroine__cat.active {
+	color: var(--col-hl);
+	background: white;
+	border: 1px solid var(--col-hl);
+	border-bottom: none;
+	position: relative;
+	z-index: 2
+}
+
+.heroine__content {
+	border: 1px solid var(--col-hl);
+	padding: 20px;
+	background-color: white;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	min-height: 100px
+}
+
+@media (min-width: 768px) {
+	.heroine {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start
+	}
+
+	.heroine__cats {
+		flex-direction: column;
+		align-items: stretch;
+		width: 200px;
+		margin-right: -1px
+	}
+
+	.heroine__cat {
+		border: 1px solid transparent;
+		border-right: none;
+		text-align: left;
+		padding: 10px 14px;
+		width: 100%;
+	}
+
+	.heroine__cat.active {
+		border: 1px solid var(--col-hl);
+		border-right: none;
+		border-radius: 0;
+		background: white;
+		color: var(--col-hl);
+	}
+
+	.heroine__content {
+		flex: 1;
+	}
 }
 
 @media (max-width: 550px) {
