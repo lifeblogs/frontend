@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import Subscribe from "../components/Subscribe.jsx";
+import Testimonies from "../components/Testimonies.jsx";
+
 
 function Home() {
 	const cats = ['health', 'wealth', 'philosophy', 'life'];
@@ -64,7 +67,7 @@ function Home() {
 		) : current ? (
 			<>
 			<div className="cat__name">
-			<Link to={`/category/${current.category}`}>{current.category}</Link>&nbsp;&nbsp;&nbsp;&nbsp;|
+			<Link to={`/category/${current.category}`}>{current.category} &#8599;</Link>&nbsp;&nbsp;&nbsp;&nbsp;|
 			&nbsp;&nbsp;&nbsp;<span class="cat__read">{getReadTime(current.content)}</span>
 			</div>
 			<h2>{current.title}</h2>
@@ -75,6 +78,16 @@ function Home() {
 		)}
 		</div>
 		</div>
+
+		<div className="subscribe">
+			<h2>Subscribe to the Newsletter</h2>
+			<p>
+				Get it served fresh right through email each week; type your address and we will deliver the weekly articles to you. At the moment, we're still figuring things out. These will start sending in a few weeks.
+			</p>
+			<Subscribe />
+		</div>
+
+		<Testimonies />
 		</>
 	);
 }

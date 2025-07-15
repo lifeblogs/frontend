@@ -212,6 +212,21 @@ form input, button {
 	font-style: italic
 }
 
+@media (max-width: 550px) {
+
+	.hero {
+		margin: 5rem 0
+	}
+
+	.hero__name {
+		font-size: 36px
+	}
+
+	.hero__desc {
+		font-size: 16px
+	}
+}
+
 .heroine {
 	flex-direction: column;
 }
@@ -265,7 +280,7 @@ form input, button {
 	.heroine__cats {
 		flex-direction: column;
 		align-items: stretch;
-		width: 200px;
+		width: 150px;
 		margin-right: -1px
 	}
 
@@ -290,19 +305,108 @@ form input, button {
 	}
 }
 
+.subscribe {
+	max-width: 700px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 4rem auto;
+	text-align: center
+}
+
+h2 {
+	font-size: 1.616rem;
+	line-height: 1
+}
+
+.subscribe h2 {
+	margin-bottom: 10px
+}
+
+.subscribe p {
+	font-size: 15px;
+	margin-bottom: 2em
+}
+
+.testimony {
+	max-width: 800px;
+	margin: 50px auto;
+	padding: 20px;
+	text-align: center;
+	border: 1px solid var(--col-hl);
+	border-radius: 10px;
+	background: #fefefe;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.testimony__text {
+	display: flex
+}
+
+.testimony__quo {
+	font-size: 6rem;
+	line-height: 1.2;
+	color: var(--col-hl);
+	font-style: italic
+}
+
+.testimony__text p {
+	width: 95%;
+	font-size: 1.2em;
+	color: #333;
+	font-style: italic;
+	margin-bottom: 10px;
+	min-height: 80px;
+	transition: opacity 0.5s ease
+}
+
+.testimony__text h4 {
+	margin: 0;
+	font-size: 1em;
+	color: #666;
+}
+
+.carousel__dots {
+	margin-top: -20px;
+	display: flex;
+	justify-content: center
+}
+
 @media (max-width: 550px) {
 
-	.hero {
-		margin: 5rem 0
+	.subscribe {
+		margin-top: 2.5rem
 	}
 
-	.hero__name {
-		font-size: 36px
+	.testimony {
+		padding: 10px
 	}
 
-	.hero__desc {
-		font-size: 16px
+	.testimony__text p {
+		width: 98%;
+		font-size : 14px;
+		margin-bottom: 0px
 	}
+
+	.testimony__quo {
+		font-size: 3rem;
+		line-height: 1.5
+	}
+}
+
+.dot {
+	height: 10px;
+	width: 10px;
+	margin: 0 6px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	cursor: pointer;
+	transition: background-color 0.3s ease
+}
+
+.dot.active {
+	background-color: #333;
 }
 
 footer {
