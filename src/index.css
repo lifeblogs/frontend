@@ -139,7 +139,7 @@ form input, button {
 	font-size: 14px
 }
 
-@media (max-width: 950px) {
+@media (max-width: 900px) {
 	nav {
 		font-size: 14px;
 		padding: 1rem;
@@ -316,7 +316,7 @@ form input, button {
 	}
 
 	.heroine__catdesc {
-		display: show
+		display: block
 	}
 
 	.heroine__cat.active {
