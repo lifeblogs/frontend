@@ -11,6 +11,10 @@ function Admin() {
 	const [editId, setEditId] = useState(null);
 	const [message, setMessage] = useState('');
 
+	// new state for subscribers
+	const [subscribers, setSubscribers] = useState([]);
+	const [loadingSubs, setLoadingSubs] = useState(true);
+
 	useEffect(() => {
 		fetch(`${import.meta.env.VITE_API_URL}/admin/protected`, {
 			credentials: 'include'
@@ -19,6 +23,7 @@ function Admin() {
 				if (res.ok) {
 					setIsAuthorized(true);
 					fetchBlogs();
+					fetchSubscribers();
 				} else {
 					window.location.href = '/admin-login';
 				}
@@ -26,9 +31,28 @@ function Admin() {
 	}, []);
 
 	const fetchBlogs = async () => {
-		const res = await fetch(`${import.meta.env.VITE_API_URL}/blogs`);
+		const res = await fetch(`${import.meta.env.VITE_API_URL}/blogs`, {
+				credentials: 'include'
+			});
 		const data = await res.json();
 		setBlogs(data);
+	};
+
+	// new function for subscribers
+	const fetchSubscribers = async () => {
+		try {
+			const res = await fetch(`${import.meta.env.VITE_API_URL}/subscribers`, {
+				credentials: 'include'
+			});
+			if (!res.ok) throw new Error('Failed to fetch subscribers');
+			const data = await res.json();
+			setSubscribers(data);
+		} catch (err) {
+			console.error('Error fetching subscribers:', err);
+			setSubscribers([]);
+		} finally {
+			setLoadingSubs(false);
+		}
 	};
 
 	const handleSubmit = async (e) => {
@@ -112,6 +136,32 @@ function Admin() {
 			</li>
 		))}
 		</ul>
+
+		<h3 style={{ marginTop: '2rem' }}>Subscribers</h3>
+		{loadingSubs ? (
+			<p>Loading subscribers...</p>
+		) : subscribers.length === 0 ? (
+			<p>No subscribers yet.</p>
+		) : (
+			<table border="1" cellPadding="6" style={{ marginTop: '1rem', width: '100%' }}>
+			<thead>
+			<tr>
+			<th>ID</th>
+			<th>Email</th>
+			<th>Subscribed At</th>
+			</tr>
+			</thead>
+			<tbody>
+			{subscribers.map(s => (
+				<tr key={s.id}>
+				<td>{s.id}</td>
+				<td>{s.email}</td>
+				<td>{new Date(s.subscribed_at).toLocaleString()}</td>
+				</tr>
+			))}
+			</tbody>
+			</table>
+		)}
 		</div>
 	);
 }

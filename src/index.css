@@ -326,7 +326,7 @@ form input, button {
 	}
 
 	.heroine__content {
-		flex: 1;
+		flex: 1
 	}
 }
 
@@ -340,8 +340,14 @@ form input, button {
 }
 
 h2 {
-	font-size: 1.616rem;
-	line-height: 1
+	font-size: 1.216rem;
+	line-height: 1.4
+}
+
+@media (max-width: 550px) {
+	h2 {
+		font-size: 1rem
+	}
 }
 
 .subscribe h2 {
@@ -465,13 +471,19 @@ h1, h2, h3 {
 }
 
 .cat__name {
+	margin-bottom: -10px;
 	font-family: var(--font-sf);
 	font-weight: bold;
 	text-transform: uppercase
 }
 
+@media (max-width: 500px) {
+	.cat__name {
+		font-size: smaller
+	}
+}
+
 .cat__read {
-	font-size: small;
 	color: gray
 }
 

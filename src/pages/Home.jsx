@@ -6,6 +6,7 @@ import Testimonies from "../components/Testimonies.jsx";
 
 
 function Home() {
+
 	const cats = [{'name': 'health', 'desc': 'Tips and insights for a stronger body and mind.'}, 
 		{'name': 'wealth', 'desc': 'Practical ideas for growing and managing your money.'},
 		{'name': 'philosophy', 'desc': 'Thought-provoking takes on how to think and live.'},
@@ -72,12 +73,14 @@ function Home() {
 			<p>Loading…</p>
 		) : current ? (
 			<>
+			<center>
 			<div className="cat__name">
 			<Link to={`/category/${current.category}`}>More &#8599;</Link>&nbsp;&nbsp;&nbsp;&nbsp;|
-			&nbsp;&nbsp;&nbsp;<span class="cat__read">{getReadTime(current.content)}</span>
+			&nbsp;&nbsp;&nbsp;<span className="cat__read">{getReadTime(current.content)}</span>
 			</div>
 			<h2>{current.title}</h2>
-			<ReactMarkdown>{current.content}</ReactMarkdown>
+			</center>
+			<ReactMarkdown style="margin-top: 10px">{current.content}</ReactMarkdown>
 			</>
 		) : (
 			<p>No post found for “{activeCat}”.</p>
@@ -86,11 +89,11 @@ function Home() {
 		</div>
 
 		<div className="subscribe">
-			<h2>Subscribe to the Newsletter</h2>
-			<p>
-				Get it served fresh right through email each week; type your address and we will deliver the weekly articles to you. Launching in a few weeks, get early access!
-			</p>
-			<Subscribe />
+		<h2>Subscribe to the Newsletter</h2>
+		<p>
+		Get it served fresh right through email each week; type your address and we will deliver the weekly articles to you. Launching in a few weeks, get early access!
+		</p>
+		<Subscribe />
 		</div>
 
 		<Testimonies />
