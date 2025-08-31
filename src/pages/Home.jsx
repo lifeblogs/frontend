@@ -78,7 +78,7 @@ function Home() {
 			<Link to={`/category/${current.category}`}>More &#8599;</Link>&nbsp;&nbsp;&nbsp;&nbsp;|
 			&nbsp;&nbsp;&nbsp;<span className="cat__read">{getReadTime(current.content)}</span>
 			</div>
-			<h2>{current.title}</h2>
+			<h3>{current.title}</h3>
 			</center>
 			<ReactMarkdown style="margin-top: 10px">{current.content}</ReactMarkdown>
 			</>

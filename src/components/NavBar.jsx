@@ -4,22 +4,31 @@ import Subscribe from "../components/Subscribe.jsx";
 
 
 export default function NavBar({openMenu, setOpenMenu}) {
+
 	const [showTopics, setShowTopics] = useState(false);
 
 	return (
 
 		<>
 		<nav>
-		<Link to="/" onClick={() => setOpenMenu(false)}>Home</Link>
 
-		<div className="dropdown-button" onClick={() => setOpenMenu(!openMenu)}>☰</div>
+		<Link to="/" onClick={() => setOpenMenu(false)}>Home</Link>
 
 		<ul className={`links ${openMenu ? 'open' : ''}`}>
 		<li><Link to="/about" onClick={() => setOpenMenu(false)}>About</Link></li>
 		<li><Link to="/archive" onClick={() => setOpenMenu(false)}>Archive</Link></li>
 		<li><Link to="/contact" onClick={() => setOpenMenu(false)}>Contact</Link></li>
-		<li><Subscribe /></li>
 		</ul>
+
+		<div class="nav-right">
+			<div className="nav-subscribe">
+				<Subscribe />
+			</div>
+			<div className="dropdown-button" onClick={() => setOpenMenu(!openMenu)}>
+				☰
+			</div>
+		</div>
+
 		</nav>
 		</>
 

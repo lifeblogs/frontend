@@ -36,6 +36,12 @@ a {
 	}
 }
 
+@media (max-width: 900px) {
+	body, html {
+		overflow-x: hidden
+	}
+}
+
 body {
 	font-family: var(--font-rm);
 	font-size: 14px;
@@ -45,19 +51,34 @@ body {
 	margin: 0
 }
 
-
 nav {
 	font-family: var(--font-sf);
 	padding: 1rem;
 	font-size: 16px;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	box-shadow: 0 2px 2px -2px grey;
 	margin-bottom: 1rem;
 	background-color: rgba(245, 243, 238, 0.75);
 	backdrop-filter: blur(5px);
-	will-change: backdrop-filter
+	will-change: backdrop-filter;
+
+	position: sticky;
+	top: 0;
+	z-index: 10
+}
+
+.nav-right {
+	position: absolute;
+	right: 10px;
+	top: 10px
+}
+
+@media (max-width: 900px) {
+	.nav-subscribe {
+		display: none
+	}
 }
 
 .blurred {
@@ -71,15 +92,40 @@ nav {
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	margin-left: 2rem;
 	display: flex;
 	gap: 2rem;
 	align-items: center
 }
 
+@media (max-width: 900px) {
+	.links {
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 100vw;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 1rem;
+		background-color: var(--col-bg);
+		border-radius: 0 0 0 10px;
+
+		transform: translateX(100%);
+		transition: transform 0.2s ease-in-out;
+		pointer-events: none;
+		opacity: 0;
+	}
+
+	.links.open {
+		transform: translateX(0);
+		pointer-events: auto;
+		opacity: 1;
+	}
+}
+
 nav li {
 	display: inline-block;
-	margin: 0;
-	padding: auto
+	margin: 0
 }
 
 nav a {
@@ -98,7 +144,7 @@ nav a:hover {
 
 .dropdown-menu {
 	position: absolute;
-	top: 100%;
+	top: 0;
 	left: 0;
 	padding: 4px;
 	z-index: 10;
@@ -141,13 +187,10 @@ form input, button {
 
 @media (max-width: 900px) {
 	nav {
+		justify-content: space-between;
 		font-size: 14px;
 		padding: 1rem;
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		z-index: 1000;
+		margin-bottom: 20px;
 		background-color: var(--col-bg)
 	}
 
@@ -166,13 +209,13 @@ form input, button {
 
 	.links {
 		position: fixed;
-		top: 76.797px;
+		top: 57.19px;
 		right: -100vw;
 		width: 100vw;
 		flex-direction: column;
 		align-items: flex-start;
 		padding: 1rem;
-		transition: right 0.1s ease;
+		transition: right 0.1s ease-in-out;
 		z-index: 100;
 		background-color: var(--col-bg);
 		border-radius: 0px 0px 0px 10px
@@ -245,14 +288,15 @@ form input, button {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 3px
+	margin-bottom: 3px;
+	text-align: right
 }
 
 .heroine__cat {
 	font-family: var(--font-sf);
 	font-weight: bold;
 	color: var(--col-fg);
-	font-size: 11px;
+	font-size: 12px;
 	text-transform: uppercase;
 	padding: 10px 0px;
 	background: transparent;
@@ -309,7 +353,7 @@ form input, button {
 		border: 1px solid transparent;
 		border-right: none;
 		text-align: left;
-		font-size: 13px;
+		font-size: 14px;
 		padding: 10px 14px;
 		width: 100%;
 		border-radius: 5px
@@ -339,15 +383,8 @@ form input, button {
 	text-align: center
 }
 
-h2 {
-	font-size: 1.216rem;
+h3 {
 	line-height: 1.4
-}
-
-@media (max-width: 550px) {
-	h2 {
-		font-size: 1rem
-	}
 }
 
 .subscribe h2 {
@@ -474,7 +511,8 @@ h1, h2, h3 {
 	margin-bottom: -10px;
 	font-family: var(--font-sf);
 	font-weight: bold;
-	text-transform: uppercase
+	text-transform: uppercase;
+	font-size: small
 }
 
 @media (max-width: 500px) {
@@ -503,7 +541,7 @@ h1, h2, h3 {
 	}
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
 	.cards {
 		grid-template-columns: 1fr;
 		width: 80%

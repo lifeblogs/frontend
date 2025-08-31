@@ -36,7 +36,7 @@ function Blog() {
 			&nbsp;&nbsp;&nbsp;<span class="cat__read">{getReadTime(blog.content)}</span>
 		</div>
 		<div>
-		<h1>{blog.title}</h1>
+		<h2>{blog.title}</h2>
 		<p>
 		<em>Posted on {new Date(blog.date_created).toLocaleDateString()}</em>
 		</p>
