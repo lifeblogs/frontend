@@ -22,7 +22,7 @@ function AdminLogin({ onLogin }) {
 
 	return (
 		<form onSubmit={handleSubmit}>
-		Enter the pass-code to log into the admin panel:
+		Enter the pass-code to log into the admin panel:&nbsp;&nbsp;
 		<input
 		type="password"
 		placeholder="(type here)"
