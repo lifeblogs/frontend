@@ -30,18 +30,16 @@ function Blog() {
 
 	return (
 		<>
-
-		<div className="cat__name">
-		<Link to={`/category/${blog.category}`}>{blog.category}</Link>&nbsp;&nbsp;&nbsp;&nbsp;|
-			&nbsp;&nbsp;&nbsp;<span class="cat__read">{getReadTime(blog.content)}</span>
-		</div>
-		<div>
-		<h2>{blog.title}</h2>
-		<p>
-		<em>Posted on {new Date(blog.date_created).toLocaleDateString()}</em>
-		</p>
-		<ReactMarkdown>{blog.content}</ReactMarkdown>
-		<hr />
+		
+		<div className="heroine__content">
+			<center>
+			<div className="cat__name">
+			<span className="cat__read">{getReadTime(blog.content)}</span>
+			</div>
+			<h3>{blog.title}</h3>
+			</center>
+			<ReactMarkdown style="margin-top: 10px">{blog.content}</ReactMarkdown>
+			<center className="readmore"><Link to={`/category/${blog.category}`}>Keep exploring &#8599;</Link></center>
 		</div>
 
 		</>

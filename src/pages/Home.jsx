@@ -75,12 +75,12 @@ function Home() {
 			<>
 			<center>
 			<div className="cat__name">
-			<Link to={`/category/${current.category}`}>More &#8599;</Link>&nbsp;&nbsp;&nbsp;&nbsp;|
-			&nbsp;&nbsp;&nbsp;<span className="cat__read">{getReadTime(current.content)}</span>
+			<span className="cat__read">{getReadTime(current.content)}</span>
 			</div>
 			<h3>{current.title}</h3>
 			</center>
 			<ReactMarkdown style="margin-top: 10px">{current.content}</ReactMarkdown>
+			<center className="readmore"><Link to={`/category/${current.category}`}>Explore related articles &#8599;</Link></center>
 			</>
 		) : (
 			<p>No post found for “{activeCat}”.</p>
@@ -88,13 +88,20 @@ function Home() {
 		</div>
 		</div>
 
-		<div className="subscribe">
-		<h2>Subscribe to the Newsletter</h2>
+		<section className="subscribe">
+		<h1>Subscribe to the Newsletter</h1>
 		<p>
 		Get it served fresh right through email each week; type your address and we will deliver the weekly articles to you. Launching in a few weeks, get early access!
 		</p>
 		<Subscribe />
-		</div>
+		</section>
+
+		<hr />
+
+		<section>
+			<h1>About Us</h1>
+			<p>This is about us.</p>
+		</section>
 
 		<Testimonies />
 		</>

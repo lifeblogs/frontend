@@ -23,11 +23,11 @@ function CategoryPage() {
 		{blogs.length === 0 ? (
 			<p>No blog posts yet.</p>
 		) : (
-			<div className="cards">
+			<ol>
 			{blogs.map((blog) => (
-				<Card key={blog.slug} blog={blog} />
+				<li key={blog.slug} blog={blog}><Link to={`/blog/${blog.slug}`}>{blog.title}</Link> <i>posted on {new Date(blog.date_created).toLocaleDateString()}</i></li>
 			))}
-			</div>
+			</ol>
 		)}
 		</div>
 	);
