@@ -5,7 +5,6 @@
 	--font-sf: "Merriweather Sans";
 	--col-bg: #F5F3EE;
 	--col-fg: black;
-	--col-hl: #7f543c;
 	--col-text: black
 }
 
@@ -49,9 +48,13 @@ body {
 	background-color: var(--col-bg);
 	color: var(--col-text);
 	margin: 0;
-	background-image: url("/bg.jpg");
-	background-size: 100vw;
-	background-position: sticky
+	background-image: var(--bg-pic-path);
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: rgba(255, 255, 255, 0.35);
+	background-blend-mode: overlay
 }
 
 nav {
@@ -63,8 +66,8 @@ nav {
 	align-items: center;
 	box-shadow: 0 2px 2px -2px grey;
 	margin-bottom: 1.9rem;
-	background-color: rgba(245, 243, 238, 0.75);
-	backdrop-filter: blur(5px);
+	background-color: rgba(245, 243, 238, 0.2);
+	backdrop-filter: blur(20px);
 	will-change: backdrop-filter;
 
 	position: sticky;
@@ -194,6 +197,21 @@ form input, button {
 	border-radius: 10px
 }
 
+@media (max-width: 550px) {
+	form input {
+		padding: 12.5px;
+		margin-right: 10px
+	}
+
+	form button {
+		padding: 12.5px 30px
+	}
+
+	form input, button {
+		font-size: 15px
+	}
+}
+
 .readmore {
 	font-size: small;
 	font-family: var(--font-sf);
@@ -206,7 +224,14 @@ form input, button {
 		font-size: 14px;
 		padding: 1rem;
 		margin-bottom: 20px;
-		background-color: var(--col-bg)
+		background-color: color-mix(in srgb, var(--col-hl) 47%, transparent);
+		backdrop-filter: blur(3px);
+		will-change: backdrop-filter;
+		color: black
+	}
+
+	nav a {
+		color: black
 	}
 
 	.links {
@@ -226,13 +251,13 @@ form input, button {
 		position: fixed;
 		top: 57.19px;
 		right: -100vw;
-		width: 100vw;
+		width: 50vw;
 		flex-direction: column;
 		align-items: flex-start;
 		padding: 1rem;
 		transition: right 0.1s ease-in-out;
 		z-index: 100;
-		background-color: var(--col-bg);
+		background-color: white;
 		border-radius: 0px 0px 0px 10px
 	}
 
@@ -291,7 +316,7 @@ form input, button {
 	}
 
 	.hero__desc {
-		font-size: 16px
+		font-size: 15.5px
 	}
 }
 
@@ -526,6 +551,13 @@ h1, h2, h3 {
 	font-family: var(--font-sf)
 }
 
+@media (max-width: 550px) {
+	h1 {
+		font-size: 22px;
+		margin: 0
+	}
+}
+
 .cat__name {
 	margin-bottom: -10px;
 	font-family: var(--font-sf);
@@ -544,48 +576,39 @@ h1, h2, h3 {
 	color: gray
 }
 
-.cards {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-auto-rows: auto;
-	gap: 20px;
-	margin: 20px 0;
-	width: 90%;
-	margin-inline: auto
+.blog__list {
+	margin-top: 30px
 }
 
-@media (max-width: 800px) {
-	.cards {
-		grid-template-columns: repeat(2, 1fr)
-	}
-}
-
-@media (max-width: 500px) {
-	.cards {
-		grid-template-columns: 1fr;
-		width: 80%
-	}
-}
-
-.card {
-	background: var(--col-bg);
-	padding: 0.75rem;
-	border-radius: 10px;
-	box-shadow: 2px 2px 4px grey
-}
-
-.card__title {
-	line-height: 1.4;
-	font-family: var(--font-sf);
-	font-weight: 600;
-	margin: 0
-}
-
-.card__date {
-	font-family: var(--font-sf);
-	text-transform: uppercase;
-	font-size: small;
-	color: grey;
+.blog__list ol li::marker {
+	color: var(--col-hl);
 	font-weight: bold;
-	text-align: right
+	font-family: var(--col-sf)
+}
+
+.blog__list ol li {
+	padding-left: 1rem;
+	margin: 5px 0
+}
+
+.blog__list__title {
+	font-size: 16px;
+	font-weight: bold;
+	margin-right: 1rem;
+	line-height: 1.1
+}
+
+.blog__list__when {
+	font-style: italic
+}
+
+@media (max-width: 550px) {
+	.blog__list__title {
+		font-size: 16px;
+		line-height: 0.8
+	}
+
+	.blog__list ol li {
+		margin: 5px 0
+	}
 }

@@ -16,11 +16,10 @@ export default function NavBar({openMenu, setOpenMenu}) {
 
 		<ul className={`links ${openMenu ? 'open' : ''}`}>
 		<li><Link to="/about" onClick={() => setOpenMenu(false)}>About</Link></li>
-		<li><Link to="/archive" onClick={() => setOpenMenu(false)}>Archive</Link></li>
 		<li><Link to="/contact" onClick={() => setOpenMenu(false)}>Contact</Link></li>
 		</ul>
 
-		<div class="nav-right">
+		<div className="nav-right">
 			<div className="nav-subscribe">
 				<Subscribe />
 			</div>

@@ -5,14 +5,14 @@ import Subscribe from "../components/Subscribe.jsx";
 import Testimonies from "../components/Testimonies.jsx";
 
 
-function Home() {
+function Home({ activeCat, setCat }) {
 
 	const cats = [{'name': 'health', 'desc': 'Tips and insights for a stronger body and mind.'}, 
 		{'name': 'wealth', 'desc': 'Practical ideas for growing and managing your money.'},
 		{'name': 'philosophy', 'desc': 'Thought-provoking takes on how to think and live.'},
 		{'name': 'life', 'desc': 'Reflections on everyday moments, meaning, and growth.'}];
+
 	const [blogs, setBlogs] = useState({});
-	const [activeCat, setCat] = useState('health');
 	const [loading, setLoading] = useState(true);
 
 	const getReadTime = (text, wpm = 200) => {
@@ -99,11 +99,9 @@ function Home() {
 		<hr />
 
 		<section>
-			<h1>About Us</h1>
-			<p>This is about us.</p>
+		<h1>About Us</h1>
+		<p>This is about us.</p>
 		</section>
-
-		<Testimonies />
 		</>
 	);
 }
